@@ -1,0 +1,12 @@
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorter\bin\Debug\Sorter.dll
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorter\bin\Debug\Sorter.pdb
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorter\obj\Debug\Sorting.csproj.CoreCompileInputs.cache
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorter\obj\Debug\Sorter.dll
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorter\obj\Debug\Sorter.pdb
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorter\obj\Debug\Sorting.csprojResolveAssemblyReference.cache
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorting\bin\Debug\Sorter.dll
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorting\bin\Debug\Sorter.pdb
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorting\obj\Debug\Sorting.csprojResolveAssemblyReference.cache
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorting\obj\Debug\Sorting.csproj.CoreCompileInputs.cache
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorting\obj\Debug\Sorter.dll
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\Sorting\obj\Debug\Sorter.pdb
