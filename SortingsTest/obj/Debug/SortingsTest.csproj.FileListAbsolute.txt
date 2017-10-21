@@ -16,3 +16,12 @@ E:\studying\programming\EPAM training\NET.W.2017.Astapchik.01\NET.W.2017.Astapch
 E:\studying\programming\EPAM training\NET.W.2017.Astapchik.01\NET.W.2017.Astapchik.01\SortingsTest\obj\Debug\SortingsTest.csproj.CoreCompileInputs.cache
 E:\studying\programming\EPAM training\NET.W.2017.Astapchik.01\NET.W.2017.Astapchik.01\SortingsTest\obj\Debug\SorterConsole.exe
 E:\studying\programming\EPAM training\NET.W.2017.Astapchik.01\NET.W.2017.Astapchik.01\SortingsTest\obj\Debug\SorterConsole.pdb
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\bin\Debug\SorterConsole.exe.config
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\bin\Debug\SorterConsole.exe
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\bin\Debug\SorterConsole.pdb
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\bin\Debug\Sorter.dll
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\bin\Debug\Sorter.pdb
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\obj\Debug\SortingsTest.csprojResolveAssemblyReference.cache
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\obj\Debug\SortingsTest.csproj.CoreCompileInputs.cache
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\obj\Debug\SorterConsole.exe
+E:\studying\programming\EPAM training\Day 1\NET.W.2017.Astapchik.01\SortingsTest\obj\Debug\SorterConsole.pdb

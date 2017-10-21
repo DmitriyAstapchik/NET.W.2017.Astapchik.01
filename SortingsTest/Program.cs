@@ -1,5 +1,5 @@
 ﻿using System;
-using Sortings;
+using static Sortings.Sorter;
 
 namespace SortingsTest
 {
@@ -9,25 +9,29 @@ namespace SortingsTest
 
         static void Main(string[] args)
         {
-            TestQuicksort(200);
-            TestMergeSort(200);
+            TestSorting(Quicksort, times: 200);
+            TestSorting(MergeSort, times: 200);
 
             Console.Read();
         }
 
-        static bool IsSorted(int[] array)
-        {
-            var sorted = true;
+        delegate void Sort(int[] array, int startIndex, int endIndex);
 
-            for (int i = 0; i < array.Length - 1; i++)
+        static void TestSorting(Sort sorting, byte times)
+        {
+            var succeeded = 0;
+
+            for (int i = 0; i < times; i++)
             {
-                if (array[i] > array[i + 1])
+                var array = MakeArray();
+                sorting.Method.Invoke(null, new object[] { array, 0, array.Length - 1 });
+                if (IsSorted(array, 0, array.Length - 1))
                 {
-                    sorted = false;
+                    succeeded++;
                 }
             }
 
-            return sorted;
+            Console.WriteLine($"{sorting.Method.Name} test. Succeeded: {succeeded} of {times}.");
         }
 
         static int[] MakeArray()
@@ -42,37 +46,19 @@ namespace SortingsTest
             return array;
         }
 
-        static void TestQuicksort(byte times)
+        static bool IsSorted(int[] array, int startIndex, int endIndex)
         {
-            var succeeded = 0;
+            var sorted = true;
 
-            for (int i = 0; i < times; i++)
+            for (int i = startIndex; i < endIndex; i++)
             {
-                var array = MakeArray();
-                Sorter.Quicksort(array);
-                if (IsSorted(array))
+                if (array[i] > array[i + 1])
                 {
-                    succeeded++;
+                    sorted = false;
                 }
             }
 
-            Console.WriteLine($"Quicksort test. Succeeded: {succeeded} of {times}.");
-        }
-
-        static void TestMergeSort(byte times)
-        {
-            var succeeded = 0;
-
-            for (int i = 0; i < times; i++)
-            {
-                var array = MakeArray();
-                if (IsSorted(Sorter.MergeSort(array)))
-                {
-                    succeeded++;
-                }
-            }
-
-            Console.WriteLine($"Merge sort test. Succeeded: {succeeded} of {times}.");
+            return sorted;
         }
     }
 }

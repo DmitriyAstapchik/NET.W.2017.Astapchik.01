@@ -8,26 +8,75 @@ namespace Sortings
 
         public static void Quicksort(int[] array)
         {
+            ValidateArray(array);
+
             Partition(array, 0, array.Length - 1);
         }
 
-        public static int[] MergeSort(int[] array)
+        public static void Quicksort(int[] array, int startIndex, int endIndex)
         {
-            int[][] subArrays = Divide(array);
+            ValidateArray(array);
+            ValidateIndices(array, startIndex, endIndex);
 
-            for (int i = 0; i < 2; i++)
+            Partition(array, startIndex, endIndex);
+        }
+
+        public static void MergeSort(int[] array)
+        {
+            ValidateArray(array);
+
+            MergeSort(array, 0, array.Length - 1);
+        }
+
+        public static void MergeSort(int[] array, int startIndex, int endIndex)
+        {
+            ValidateArray(array);
+            if (array.Length < 2) return;
+            ValidateIndices(array, startIndex, endIndex);
+
+            var parts = Divide(startIndex, endIndex);
+
+            foreach (var indices in parts)
             {
-                if (subArrays[i].Length > 1)
+                if (indices[1] > indices[0])
                 {
-                    subArrays[i] = MergeSort(subArrays[i]);
+                    MergeSort(array, indices[0], indices[1]);
                 }
             }
 
-            return Merge(subArrays[0], subArrays[1]);
+            Merge(array, parts[0], parts[1]);
+        }
+
+        static void ValidateArray(int[] array)
+        {
+            if (array == null)
+            {
+                throw new NullReferenceException("Array reference not set to an instance of an array.");
+            }
+        }
+
+        static void ValidateIndices(int[] array, int startIndex, int endIndex)
+        {
+            if (startIndex < 0 || startIndex >= array.Length)
+            {
+                throw new ArgumentOutOfRangeException("Start index out of array range.");
+            }
+
+            if (endIndex < 0 || endIndex >= array.Length)
+            {
+                throw new ArgumentOutOfRangeException("End index out of array range.");
+            }
+
+            if (endIndex < startIndex)
+            {
+                throw new ArgumentException("End index lower than start index.");
+            }
         }
 
         static void Partition(int[] array, int firstIndex, int lastIndex)
         {
+            if (array.Length < 2) return;
+
             int lowIndex = firstIndex; // current index for low number
             int highIndex = lastIndex; // current index for high number
             var pivot = array[rand.Next(firstIndex, lastIndex + 1)];
@@ -66,51 +115,25 @@ namespace Sortings
             }
         }
 
-        static int[][] Divide(int[] array)
+        static int[][] Divide(int firstIndex, int lastIndex)
         {
-            var leftPart = new int[array.Length / 2];
-            var rightPart = new int[array.Length - leftPart.Length];
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (i < leftPart.Length)
-                {
-                    leftPart[i] = array[i];
-                }
-                else
-                {
-                    rightPart[i - leftPart.Length] = array[i];
-                }
-            }
-
-            return new int[2][] { leftPart, rightPart };
+            var leftPartIndices = new int[2] { firstIndex, firstIndex + (lastIndex - firstIndex) / 2 };
+            var rightPartIndices = new int[2] { leftPartIndices[1] + 1, lastIndex };
+            return new int[2][] { leftPartIndices, rightPartIndices };
         }
 
-        static int[] Merge(int[] leftPart, int[] rightPart)
+        static void Merge(int[] array, int[] leftPartIndices, int[] rightPartIndices)
         {
-            int[] result = new int[leftPart.Length + rightPart.Length];
-
-            for (int i = 0, li = 0, ri = 0; i < result.Length; i++)
+            for (int i = leftPartIndices[0]; i <= leftPartIndices[1]; i++)
             {
-                if (li >= leftPart.Length)
+                for (int j = rightPartIndices[0], k = i; j <= rightPartIndices[1]; j++, k++)
                 {
-                    result[i] = rightPart[ri++];
-                }
-                else if (ri >= rightPart.Length)
-                {
-                    result[i] = leftPart[li++];
-                }
-                else if (leftPart[li] < rightPart[ri])
-                {
-                    result[i] = leftPart[li++];
-                }
-                else
-                {
-                    result[i] = rightPart[ri++];
+                    if (array[k] > array[j])
+                    {
+                        Swap(ref array[k], ref array[j]);
+                    }
                 }
             }
-
-            return result;
         }
     }
 }
