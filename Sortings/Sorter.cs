@@ -4,7 +4,7 @@ namespace Sortings
 {
     public static class Sorter
     {
-        static Random rand = new Random();
+        private static Random rand = new Random();
 
         public static void Quicksort(int[] array)
         {
@@ -34,20 +34,20 @@ namespace Sortings
             if (array.Length < 2) return;
             ValidateIndices(array, startIndex, endIndex);
 
-            var parts = Divide(startIndex, endIndex);
+            var indices = Divide(startIndex, endIndex);
 
-            foreach (var indices in parts)
+            for (int i = 0; i < indices.Length; i += 2)
             {
-                if (indices[1] > indices[0])
+                if (indices[i + 1] > indices[i])
                 {
-                    MergeSort(array, indices[0], indices[1]);
+                    MergeSort(array, indices[i], indices[i + 1]);
                 }
             }
 
-            Merge(array, parts[0], parts[1]);
+            Merge(array, indices);
         }
 
-        static void ValidateArray(int[] array)
+        private static void ValidateArray(int[] array)
         {
             if (array == null)
             {
@@ -55,7 +55,7 @@ namespace Sortings
             }
         }
 
-        static void ValidateIndices(int[] array, int startIndex, int endIndex)
+        private static void ValidateIndices(int[] array, int startIndex, int endIndex)
         {
             if (startIndex < 0 || startIndex >= array.Length)
             {
@@ -73,7 +73,7 @@ namespace Sortings
             }
         }
 
-        static void Partition(int[] array, int firstIndex, int lastIndex)
+        private static void Partition(int[] array, int firstIndex, int lastIndex)
         {
             if (array.Length < 2) return;
 
@@ -105,7 +105,7 @@ namespace Sortings
             }
         }
 
-        static void Swap(ref int a, ref int b)
+        private static void Swap(ref int a, ref int b)
         {
             if (a != b)
             {
@@ -115,18 +115,18 @@ namespace Sortings
             }
         }
 
-        static int[][] Divide(int firstIndex, int lastIndex)
+        private static int[] Divide(int firstIndex, int lastIndex)
         {
             var leftPartIndices = new int[2] { firstIndex, firstIndex + (lastIndex - firstIndex) / 2 };
             var rightPartIndices = new int[2] { leftPartIndices[1] + 1, lastIndex };
-            return new int[2][] { leftPartIndices, rightPartIndices };
+            return new int[4] { leftPartIndices[0], leftPartIndices[1], rightPartIndices[0], rightPartIndices[1] };
         }
 
-        static void Merge(int[] array, int[] leftPartIndices, int[] rightPartIndices)
+        private static void Merge(int[] array, int[] indices)
         {
-            for (int i = leftPartIndices[0]; i <= leftPartIndices[1]; i++)
+            for (int i = indices[0]; i <= indices[1]; i++)
             {
-                for (int j = rightPartIndices[0], k = i; j <= rightPartIndices[1]; j++, k++)
+                for (int j = indices[2], k = i; j <= indices[3]; j++, k++)
                 {
                     if (array[k] > array[j])
                     {
