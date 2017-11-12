@@ -31,7 +31,11 @@ namespace Sortings
         public static void MergeSort(int[] array, int startIndex, int endIndex)
         {
             ValidateArray(array);
-            if (array.Length < 2) return;
+            if (array.Length < 2)
+            {
+                return;
+            }
+
             ValidateIndices(array, startIndex, endIndex);
 
             var indices = Divide(startIndex, endIndex);
@@ -75,7 +79,10 @@ namespace Sortings
 
         private static void Partition(int[] array, int firstIndex, int lastIndex)
         {
-            if (array.Length < 2) return;
+            if (array.Length < 2)
+            {
+                return;
+            }
 
             int lowIndex = firstIndex; // current index for low number
             int highIndex = lastIndex; // current index for high number
@@ -117,7 +124,7 @@ namespace Sortings
 
         private static int[] Divide(int firstIndex, int lastIndex)
         {
-            var leftPartIndices = new int[2] { firstIndex, firstIndex + (lastIndex - firstIndex) / 2 };
+            var leftPartIndices = new int[2] { firstIndex, firstIndex + ((lastIndex - firstIndex) / 2) };
             var rightPartIndices = new int[2] { leftPartIndices[1] + 1, lastIndex };
             return new int[4] { leftPartIndices[0], leftPartIndices[1], rightPartIndices[0], rightPartIndices[1] };
         }
