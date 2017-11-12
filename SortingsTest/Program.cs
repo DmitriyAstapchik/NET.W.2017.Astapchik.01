@@ -3,21 +3,24 @@ using static Sortings.Sorter;
 
 namespace SortingsTest
 {
-    class Program
+    internal class Program
     {
-        static Random rand = new Random();
+        private static Random rand = new Random();
 
-        static void Main(string[] args)
+        private delegate void Sort(int[] array, int startIndex, int endIndex);
+
+        private static void Main(string[] args)
         {
             TestSorting(Quicksort, times: 200);
             TestSorting(MergeSort, times: 200);
 
+            Quicksort(new int[2]);
+            MergeSort(new int[2]);
+
             Console.Read();
         }
 
-        delegate void Sort(int[] array, int startIndex, int endIndex);
-
-        static void TestSorting(Sort sorting, byte times)
+        private static void TestSorting(Sort sorting, byte times)
         {
             var succeeded = 0;
 
@@ -34,7 +37,7 @@ namespace SortingsTest
             Console.WriteLine($"{sorting.Method.Name} test. Succeeded: {succeeded} of {times}.");
         }
 
-        static int[] MakeArray()
+        private static int[] MakeArray()
         {
             var array = new int[rand.Next(10, 100)];
 
@@ -46,7 +49,7 @@ namespace SortingsTest
             return array;
         }
 
-        static bool IsSorted(int[] array, int startIndex, int endIndex)
+        private static bool IsSorted(int[] array, int startIndex, int endIndex)
         {
             var sorted = true;
 
